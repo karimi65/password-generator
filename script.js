@@ -17,15 +17,14 @@ var  randomSymbol = symbol [Math.floor(Math.random() * symbol.length)]
 // Write password to the #password input
 function writePassword() {
 
-  // prompt for userInsert 
-  var insetr = prompt("How many characters you want for your password?" +'\n Your password must be between 8 and 128 characters.')
+  // prompt for insert a number between 8 and 128
+   var insert = parseInt(prompt("How many characters you want for your password?" +'\n Your password must be between 8 and 128 characters.'));
 
-  if (!insert) {
-    alert('You must enter a number!');
-  }
-   else if (inser < 8 || insert > 128) {
-     insert = prompt('You must enter a number between 8 and 128');
-   }
+  // If number less than 8 or greater than 128, a string or NaN, user is asked for isert again
+  if (insert < 8 || insert > 128 || typeof(insert) === "number" || insert === NaN || insert === null) {
+       alert('Please Choose a valid number between 8 and 128');
+       insert = parseInt(prompt("How many characters you want for your password?" +'\n Your password must be between 8 and 128 characters.'));
+       }
    else {
      confirmLower = confirm('Would you add lowercase letters?');
      confirmUpper = confirm('Would you add uppercase letters?');
@@ -33,7 +32,7 @@ function writePassword() {
      confirmSymbol = confirm('Would you add symbols?');
    };
 
-
+  
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
