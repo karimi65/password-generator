@@ -21,24 +21,68 @@ function writePassword() {
    var insert = parseInt(prompt("How many characters you want for your password?" +'\n Your password must be between 8 and 128 characters.'));
 
   // If number less than 8 or greater than 128, a string or NaN, user is asked for isert again
-  if (insert < 8 || insert > 128 || typeof(insert) === "number" || insert === NaN || insert === null) {
+  while (insert < 8 || insert > 128 || typeof(insert) != "number" || insert === NaN || insert === null) {
        alert('Please Choose a valid number between 8 and 128');
        insert = parseInt(prompt("How many characters you want for your password?" +'\n Your password must be between 8 and 128 characters.'));
-       }
-   else {
+  }
+  if (insert=true) {
      confirmLower = confirm('Would you add lowercase letters?');
      confirmUpper = confirm('Would you add uppercase letters?');
      confirmNumber = confirm('Would you add numbers?');
      confirmSymbol = confirm('Would you add symbols?');
-   };
+  }
 
+   // if users do not choose any criteria
+ if (!confirmLower && !confirmUpper &&
+    !confirmNumber && !confirmSymbol) {
+      alert ('You must choose a criteria!');
+   confirmLower = confirm('Would you add lowercase letters?');
+   confirmUpper = confirm('Would you add uppercase letters?');
+   confirmNumber = confirm('Would you add numbers?');
+   confirmSymbol = confirm('Would you add symbols?');
+  }
+
+  //choosing all criteria
+  if (confirmLower && confirmUpper &&
+  confirmNumber && confirmSymbol) {
+  console.log(randomLower + randomUpper + randomNumber + randomSymbol);
+  }
   
-  var password = generatePassword();
+  // choosing 3 criteria
+  if (confirmLower && confirmUpper && confirmNumber) {
+  choices = (randomLower + randomUpper + randomNumber);
+  }
+  else if (confirmLower && confirmUpper && confirmSymbol) {
+    console.log(randomLower + randomUpper + randomSymbol);
+  }
+  else if (confirmLower && confirmNumber && confirmSymbol) {
+    console.log(randomLower + randomNumber + randomSymbol);
+  }
+  else {
+    console.log(randomUpper + randomNumber + randomSymbol);
+  }
+
+  // choosing one criteria
+  if (confirmLower) {
+    console.log(randomLower);
+  }
+  else if (confirmUpper) {
+    console.log(randomUpper);
+  }
+  else if (confirmNumbe) {
+    console.log(randomNumber);
+  } else {console.log(randomSymbol);
+  }
+
+};
+  
+  // var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
 
-}
+  writePassword();
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+
