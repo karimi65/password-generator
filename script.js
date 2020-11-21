@@ -19,9 +19,11 @@ function writePassword() {
 
  // prompt for insert a number between 8 and 128 for the length of password
  var passLength = parseInt(prompt("How many characters you want for your password?" +'\n Your password must be between 8 and 128 characters.'));
-
+console.log(passLength);
  // If number less than 8 or greater than 128, a string or NaN, user is asked for isert again
-  while (passLength < 8 || passLength > 128 || typeof(passLength) != "number" || passLength === NaN || passLength === null) {
+ if (passLength) {
+ 
+   while (passLength < 8 || passLength > 128 || typeof(passLength) != "number" || passLength === NaN || passLength === null) {
   alert('Please choose a valid number between 8 and 128');
   passLength = parseInt(prompt("How many characters you want for your password?" +'\n Your password must be between 8 and 128 characters.'));
   }
@@ -107,7 +109,7 @@ function writePassword() {
 
  
 }
-
+ }
 function UserInput(ps) {
         document.getElementById("password").textContent = ps;
 }
