@@ -14,75 +14,61 @@ var  randomUpper = upper [Math.floor(Math.random() * upper.length)]
 var  randomNumber = number [Math.floor(Math.random() * number.length)]
 var  randomSymbol = symbol [Math.floor(Math.random() * symbol.length)]
 
+
+generateBtn.addEventListener("click", writePassword);
 // Write password to the #password input
 function writePassword() {
 
-  // prompt for insert a number between 8 and 128
-   var insert = parseInt(prompt("How many characters you want for your password?" +'\n Your password must be between 8 and 128 characters.'));
 
-  // If number less than 8 or greater than 128, a string or NaN, user is asked for isert again
-  while (insert < 8 || insert > 128 || typeof(insert) != "number" || insert === NaN || insert === null) {
-       alert('Please Choose a valid number between 8 and 128');
-       insert = parseInt(prompt("How many characters you want for your password?" +'\n Your password must be between 8 and 128 characters.'));
-  }
-  if (insert=true) {
-     confirmLower = confirm('Would you add lowercase letters?');
-     confirmUpper = confirm('Would you add uppercase letters?');
-     confirmNumber = confirm('Would you add numbers?');
-     confirmSymbol = confirm('Would you add symbols?');
-  }
+ // prompt for insert a number between 8 and 128 for the length of password
+ var passLength = parseInt(prompt("How many characters you want for your password?" +'\n Your password must be between 8 and 128 characters.'));
 
-   // if users do not choose any criteria
- if (!confirmLower && !confirmUpper &&
-    !confirmNumber && !confirmSymbol) {
-      alert ('You must choose a criteria!');
-   confirmLower = confirm('Would you add lowercase letters?');
-   confirmUpper = confirm('Would you add uppercase letters?');
-   confirmNumber = confirm('Would you add numbers?');
-   confirmSymbol = confirm('Would you add symbols?');
-  }
+ // If number less than 8 or greater than 128, a string or NaN, user is asked for isert again
+while (passLength < 8 || passLength > 128 || typeof(passLength) != "number" || passLength === NaN || passLength === null) {
+  alert('Please choose a valid number between 8 and 128');
+  passLength = parseInt(prompt("How many characters you want for your password?" +'\n Your password must be between 8 and 128 characters.'));
+}
 
-  //choosing all criteria
-  if (confirmLower && confirmUpper &&
-  confirmNumber && confirmSymbol) {
-  console.log(randomLower + randomUpper + randomNumber + randomSymbol);
-  }
-  
-  // choosing 3 criteria
-  if (confirmLower && confirmUpper && confirmNumber) {
-  choices = (randomLower + randomUpper + randomNumber);
-  }
-  else if (confirmLower && confirmUpper && confirmSymbol) {
-    console.log(randomLower + randomUpper + randomSymbol);
-  }
-  else if (confirmLower && confirmNumber && confirmSymbol) {
-    console.log(randomLower + randomNumber + randomSymbol);
-  }
-  else {
-    console.log(randomUpper + randomNumber + randomSymbol);
-  }
+ var confirmLower = confirm('Would you add lowercase letters?');
+ var confirmUpper = confirm('Would you add uppercase letters?');
+ var confirmNumber = confirm('Would you add numbers?');
+ var confirmSymbol = confirm('Would you add symbols?');
 
-  // choosing one criteria
+
+ 
+// if users do not choose any criteria
+while (!confirmLower && !confirmUpper &&
+  !confirmNumber && !confirmSymbol) {
+    alert ('You must choose a criteria!');
+ confirmLower = confirm('Would you add lowercase letters?');
+ confirmUpper = confirm('Would you add uppercase letters?');
+ confirmNumber = confirm('Would you add numbers?');
+ confirmSymbol = confirm('Would you add symbols?');
+}
+
+
+    //  if user choose criteria
   if (confirmLower) {
     console.log(randomLower);
   }
-  else if (confirmUpper) {
+  if (confirmUpper) {
     console.log(randomUpper);
   }
-  else if (confirmNumbe) {
+  if (confirmNumber) {
     console.log(randomNumber);
-  } else {console.log(randomSymbol);
+  } 
+  if (confirmSymbol) {
+    console.log(randomSymbol);
   }
 
-};
+}
+
   
   // var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
 
-  writePassword();
+  // writePassword();
 
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
 
