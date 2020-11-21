@@ -21,13 +21,13 @@ function writePassword() {
  var passLength = parseInt(prompt("How many characters you want for your password?" +'\n Your password must be between 8 and 128 characters.'));
 console.log(passLength);
  // If number less than 8 or greater than 128, a string or NaN, user is asked for isert again
- if (passLength) {
+//  if (passLength) {
  
    while (passLength < 8 || passLength > 128 || typeof(passLength) != "number" || passLength === NaN || passLength === null) {
   alert('Please choose a valid number between 8 and 128');
   passLength = parseInt(prompt("How many characters you want for your password?" +'\n Your password must be between 8 and 128 characters.'));
   }
-
+  if (passLength) {
  var includeLower = confirm('Would you add lowercase letters?');
  var includeUpper = confirm('Would you add uppercase letters?');
  var includeNumber = confirm('Would you add numbers?');
@@ -107,9 +107,9 @@ console.log(passLength);
         UserInput(ps);
         return ps;
 
- 
+    }
+  // }
 }
- }
 function UserInput(ps) {
         document.getElementById("password").textContent = ps;
 }
