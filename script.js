@@ -17,80 +17,85 @@ generateBtn.addEventListener("click", writePassword);
 // Write password to the #password input
 function writePassword() {
 
- // prompt for insert a number between 8 and 128 for the length of password
- var passLength = parseInt(prompt("How many characters you want for your password?" +'\n Your password must be between 8 and 128 characters.'));
- console.log(passLength);
+  // prompt for insert a number between 8 and 128 for the length of password
+  var passLength = parseInt(prompt("How many characters you want for your password?" +'\n Your password must be between 8 and 128 characters.'));
+  console.log(passLength);
 
- // If number is less than 8 or greater than 128, a string or NaN, user is asked for isert again
-   while (passLength < 8 || passLength > 128 || typeof(passLength) != "number" || passLength === NaN || passLength === null) {
+  // If number is less than 8 or greater than 128, a string or NaN, user is asked for isert again
+  while (passLength < 8 || passLength > 128 || typeof(passLength) != "number" || passLength === NaN || passLength === null) {
   alert('Please choose a valid number between 8 and 128');
   passLength = parseInt(prompt("How many characters you want for your password?" +'\n Your password must be between 8 and 128 characters.'));
   }
   if (passLength) {
- var includeLower = confirm('Would you add lowercase letters?');
- var includeUpper = confirm('Would you add uppercase letters?');
- var includeNumber = confirm('Would you add numbers?');
- var includeSymbol = confirm('Would you add symbols?');
+    var includeLower = confirm('Would you add lowercase letters?');
+    var includeUpper = confirm('Would you add uppercase letters?');
+    var includeNumber = confirm('Would you add numbers?');
+    var includeSymbol = confirm('Would you add symbols?');
 
 
-  // if users do not choose any criteria
-  while (!includeLower && !includeUpper &&
-  !includeNumber && !includeSymbol) {
-  alert ('You must choose a criteria!');
-  includeLower = confirm('Would you add lowercase letters?');
-  includeUpper = confirm('Would you add uppercase letters?');
-  includeNumber = confirm('Would you add numbers?');
-  includeSymbol = confirm('Would you add symbols?');
-  }
+    // if users do not choose any criteria
+    while (!includeLower && !includeUpper &&
+    !includeNumber && !includeSymbol) {
+    alert ('You must choose a criteria!');
+    includeLower = confirm('Would you add lowercase letters?');
+    includeUpper = confirm('Would you add uppercase letters?');
+    includeNumber = confirm('Would you add numbers?');
+    includeSymbol = confirm('Would you add symbols?');
+    }
+
     var choices;
+
     //choosing all criteria
     if (includeLower && includeUpper &&
       includeNumber && includeSymbol) {
      choices = lower.concat(upper, numbers, symbol); 
-     }
-     // choosing 3 criteria
-     else if (includeLower && includeUpper && includeNumber) {
-       choices = lower.concat (upper, numbers);
-     }
-     else if (includeLower && includeUpper && includeSymbol) {
-       choices = lower.concat(upper, symbol);
-     }
-     else if (includeLower && includeNumber && includeSymbol) {
-       choices = lower.concat(numbers, symbol);
-     }
-     else if (includeUpper && includeNumber && includeSymbol) {
-       choices = upper.concat(numbers,symbol);
-     }
-     // choosing 2 criteria
-     else if (includeLower && includeUpper) {
-       choices = lower.concat(upper);
-     }
-     else if (includeLower && includeNumber) {
-       choices = lower.concat(numbers);
-     }
-     else if (includeLower && includeSymbol) {
-       choices = lower.concat(symbol);
-     }
-     else if (includeUpper && includeNumber) {
-       choices = upper.concat(numbers);
-     }
-     else if (includeUpper && includeSymbol) {
-       choices = upper.concat(symbol);
-     }
-     else if (includeNumber && includeSymbol) {
-       choices = numbers.concat(symbol);
-     }
-     // choosing one criteria
-     else if (includeLower) {
-       choices = (lower);
-     }
-     else if (includeUpper) {
-       choices = (upper);
-     }
-     else if (includeNumber) {
-       choices = (numbers);
-     } else if (includeSymbol) {
-       choices = (symbol);
+    }
+
+    // choosing 3 criteria
+    else if (includeLower && includeUpper && includeNumber) {
+      choices = lower.concat (upper, numbers);
+    }
+    else if (includeLower && includeUpper && includeSymbol) {
+      choices = lower.concat(upper, symbol);
+    }
+    else if (includeLower && includeNumber && includeSymbol) {
+      choices = lower.concat(numbers, symbol);
+    }
+    else if (includeUpper && includeNumber && includeSymbol) {
+      choices = upper.concat(numbers,symbol);
+    }
+
+    // choosing 2 criteria
+    else if (includeLower && includeUpper) {
+      choices = lower.concat(upper);
+    }
+    else if (includeLower && includeNumber) {
+      choices = lower.concat(numbers);
+    }
+    else if (includeLower && includeSymbol) {
+      choices = lower.concat(symbol);
+    }
+    else if (includeUpper && includeNumber) {
+      choices = upper.concat(numbers);
+    }
+    else if (includeUpper && includeSymbol) {
+      choices = upper.concat(symbol);
+    }
+    else if (includeNumber && includeSymbol) {
+      choices = numbers.concat(symbol);
+    }
+    
+    // choosing one criteria
+    else if (includeLower) {
+      choices = (lower);
+    }
+    else if (includeUpper) {
+      choices = (upper);
+    }
+    else if (includeNumber) {
+      choices = (numbers);
+    } else if (includeSymbol) {
+      choices = (symbol);
     };
 
     var password = [];
@@ -103,10 +108,10 @@ function writePassword() {
 
     // convert the elements of password array into a string
     var finalPs = password.join("");   // using W3school website
-        UserInput(finalPs);
-        return finalPs;
+    UserInput(finalPs);
+    return finalPs;
 
-    }
+  }
   
 }
 // get the text content of password  (Final password will be shown inside the dashed box)
