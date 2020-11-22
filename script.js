@@ -1,6 +1,7 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
+// add variables
 var lower = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
 
 var upper = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","W","X","Y","Z"];
@@ -16,13 +17,11 @@ generateBtn.addEventListener("click", writePassword);
 // Write password to the #password input
 function writePassword() {
 
-
  // prompt for insert a number between 8 and 128 for the length of password
  var passLength = parseInt(prompt("How many characters you want for your password?" +'\n Your password must be between 8 and 128 characters.'));
-console.log(passLength);
- // If number less than 8 or greater than 128, a string or NaN, user is asked for isert again
-//  if (passLength) {
- 
+ console.log(passLength);
+
+ // If number is less than 8 or greater than 128, a string or NaN, user is asked for isert again
    while (passLength < 8 || passLength > 128 || typeof(passLength) != "number" || passLength === NaN || passLength === null) {
   alert('Please choose a valid number between 8 and 128');
   passLength = parseInt(prompt("How many characters you want for your password?" +'\n Your password must be between 8 and 128 characters.'));
@@ -34,7 +33,6 @@ console.log(passLength);
  var includeSymbol = confirm('Would you add symbols?');
 
 
- 
   // if users do not choose any criteria
   while (!includeLower && !includeUpper &&
   !includeNumber && !includeSymbol) {
@@ -48,7 +46,7 @@ console.log(passLength);
     //choosing all criteria
     if (includeLower && includeUpper &&
       includeNumber && includeSymbol) {
-     choices = lower.concat(upper, numbers, symbol); // do not use [] b.c. of getting many commas even no comma in symbols
+     choices = lower.concat(upper, numbers, symbol); 
      }
      // choosing 3 criteria
      else if (includeLower && includeUpper && includeNumber) {
@@ -97,30 +95,25 @@ console.log(passLength);
 
     var password = [];
 
-        // loop for random values
+    // loop for random values
     for (var i = 0; i < passLength; i++) {
       var passChoices = choices[Math.floor(Math.random() * choices.length)];
       password.push(passChoices);
     }
 
-    var ps = password.join("");
-        UserInput(ps);
-        return ps;
+    // convert the elements of password array into a string
+    var finalPs = password.join("");   // using W3school website
+        UserInput(finalPs);
+        return finalPs;
 
     }
-  // }
+  
 }
-function UserInput(ps) {
-        document.getElementById("password").textContent = ps;
+// get the text content of password  (Final password will be shown inside the dashed box)
+function UserInput(finalPs) {
+  document.getElementById("password").textContent = finalPs;     // using W3school website
 }
 
-      // var password = generatePassword();
-      
-
-      // passwordText.value = password;
-
-
-      // writePassword();
       
 
 
